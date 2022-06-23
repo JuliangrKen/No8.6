@@ -20,7 +20,7 @@ namespace FinalTask
                 }
                 catch { }
             }
-            string directory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Students";
+            string directory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Students\";
             Directory.CreateDirectory(directory);
             Student.AddFiles(students, directory);
         }
@@ -42,16 +42,11 @@ namespace FinalTask
             foreach (var student in students)
             {
                 var file = new FileInfo(dir + student.Group + ".txt");
-                using (StreamWriter sw = file.CreateText())
+                using (StreamWriter sw = file.AppendText())
                 {
                     sw.WriteLine($"{student.Name}, {student.DateOfBirth.Day}.{student.DateOfBirth.Month}.{student.DateOfBirth.Year}");
                 }    
             }
-            
         }
     }
 }
-
-
-
-
